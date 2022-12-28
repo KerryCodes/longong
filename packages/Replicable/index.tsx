@@ -1,7 +1,6 @@
 import { CheckOutlined, CopyOutlined } from '@ant-design/icons'
 import { Button, Tooltip } from 'antd'
 import React, { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import styles from './index.less'
 
 export const Replicable = React.memo(function (
@@ -12,7 +11,6 @@ export const Replicable = React.memo(function (
   }>,
 ) {
   const { value, position = 'right', fixed = false } = props
-  const { t } = useTranslation()
   const [copied, setCopied] = useState(false)
 
   const onClick = () => {
@@ -24,7 +22,7 @@ export const Replicable = React.memo(function (
   }
 
   const button = value !== null && value !== undefined && (
-    <Tooltip className={fixed ? '' : styles.button} title={copied ? t('copy_success') : t('copy')}>
+    <Tooltip className={fixed ? '' : styles.button} title={copied ? 'copy_success' : 'copy'}>
       <Button onClick={onClick} type="link" size="small" icon={copied ? <CheckOutlined /> : <CopyOutlined />} />
     </Tooltip>
   )

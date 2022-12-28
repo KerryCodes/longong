@@ -1,36 +1,34 @@
-import { ProtonTable } from './components/ProtonTable'
-import { TProtonTableService } from './components/ProtonTable/interface'
-import { columns } from './columns'
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import './App.css'
+import { Replicable } from 'longong'
 
 function App() {
-  const emitter = ProtonTable.useCreateEmitter()
-
-  const service: TProtonTableService = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({items: [ {
-          key: '1',
-          name: '胡彦斌',
-          age: 32,
-          address: '西湖区湖底公园1号',
-        },
-        {
-          key: '2',
-          name: '胡彦祖',
-          age: 42,
-          address: '西湖区湖底公园1号',
-        },]})
-      }, 3000)
-    })
-  }
+  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
       <div>
-        <ProtonTable title={() => 'Table'} emitter={emitter} service={service} columns={columns} />
+        <a href="https://vitejs.dev" target="_blank">
+          <img src="/vite.svg" className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://reactjs.org" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
       </div>
-      <div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
       </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+      <Replicable value='value'>Replicable</Replicable>
     </div>
   )
 }
